@@ -26,7 +26,7 @@ const ContactComponent = ({ contact }) => {
           Email: { contact.email }
         </li>
         <li>
-          { contact.conected ? 'Contacto en línea':'Contacto no disponible' }
+          { conected ? 'Contacto en línea':'Contacto no disponible' }
         </li>
       </ul>
       <div>
