@@ -1,5 +1,5 @@
 /**
- * Componente clase
+ * Componente funcional
  */
 
 import React, { Component, useEffect, useState } from 'react';
