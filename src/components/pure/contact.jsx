@@ -1,46 +1,59 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Contact } from '../../models/contact.class';
+import '../../styles/contact.scss';
 
 
-const ContactComponent = ({ contact }) => {
+const ContactComponent = ({ contact, changeConected, remove, create }) => {
 
-  const [conected, setconected] = useState(contact.conected);
-
-  const changeStatus = () => {
-    contact.conected = !contact.conected;
-    setconected(contact.conected);
-  }
+  function contactConected() {
+    if (contact.conected) {
+      return (
+        <td>
+          <i
+            className='bi-circle-fill contact-action'
+            style={{ color: 'green' }}
+            onClick={() => changeConected(contact)}
+          />
+          <span>Online</span>
+        </td>
+      )
+    } else {
+      return (
+        <td>
+          <i
+            className='bi-circle-fill contact-action'
+            style={{ color: 'grey' }}
+            onClick={() => changeConected(contact)}
+          />
+          <span>Offline</span>
+        </td>
+      )
+    }
+  };
 
   return (
-    <div>
-      <h1>Contacto</h1>
-      <ul>
-        <li>
-          Nombre: { contact.name }
-        </li>
-        <li>
-          Apellido: { contact.lastName }
-        </li>
-        <li>
-          Email: { contact.email }
-        </li>
-        <li>
-          { conected ? 'Contacto en línea':'Contacto no disponible' }
-        </li>
-      </ul>
-      <div>
-        <button onClick={ changeStatus }>
-          Cambiar de estado
-        </button>
-      </div>
-    </div>
+    <tr>
+      <td>{contact.name}</td>
+      <td>{contact.lastName}</td>
+      <td>{contact.email}</td>
+      {contactConected()}
+      <td>
+        <i
+          className='bi-trash contact-action'
+          style={{ color: 'tomato' }}
+          onClick={() => remove(contact)}
+        />
+      </td>
+    </tr>
   );
 };
 
 
 ContactComponent.propTypes = {
-  contacto: PropTypes.instanceOf(Contact)
+  contact: PropTypes.instanceOf(Contact).isRequired,
+  changeConected: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired
 };
 
 
