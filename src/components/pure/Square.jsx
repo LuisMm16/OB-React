@@ -18,7 +18,7 @@ const Square = () => {
 
   useEffect(() => {
     if (!stopColor) {
-      setRgb(randomRgb());
+      setTimeout(() => setRgb(randomRgb()), 500);
     }
   }, [rgb, stopColor])
 
