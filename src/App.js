@@ -9,6 +9,7 @@ import RegisterPage from './pages/auth/RegisterPage';
 import DashboardPage from './pages/dashboard/Dashboard';
 import TasksPage from './pages/tasks/TasksPage';
 import NotFoundPage from './pages/404/NotFoundPage';
+import ChuckJokesPage from './pages/chuck/ChuckJokesPage';
 
 function App() {
   function addTask(task) {
@@ -60,6 +61,9 @@ function App() {
             :
             <Navigate to='/login' />
         } />
+
+        {/* Chuck Norris Jokes */}
+        <Route path='/chuck' element={<ChuckJokesPage />} />
 
         <Route path='/*' element={<NotFoundPage />} />
       </Routes>
