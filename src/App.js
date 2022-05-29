@@ -10,6 +10,7 @@ import DashboardPage from './pages/dashboard/Dashboard';
 import TasksPage from './pages/tasks/TasksPage';
 import NotFoundPage from './pages/404/NotFoundPage';
 import ChuckJokesPage from './pages/chuck/ChuckJokesPage';
+import TaskReducer from './pages/tasks/TaskReducer';
 
 function App() {
   function addTask(task) {
@@ -61,6 +62,9 @@ function App() {
             :
             <Navigate to='/login' />
         } />
+
+        {/* Task Route controlled with Context and useReducer */}
+        <Route path='taskreducer' element={<TaskReducer />}/>
 
         {/* Chuck Norris Jokes */}
         <Route path='/chuck' element={<ChuckJokesPage />} />
